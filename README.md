@@ -1,23 +1,91 @@
 
 # Capstone Project: WordPress Site on AWS
 
-### Project Scenario
+## Project Scenario and Overview
 
-A small to medium-sized digital marketing agency, __"DigitalBoost"__, wants to enhance its online presence by creating a high-performance. __WordPress-based__ website for their clients. The agency needs a scalable, secure, and cost-effective solution that can handle increasing traffic and seamlessly integrate with their existing infrastructure. Your task as an AWS Solutions Architect is to design and implement a WordPress solution using various AWS services, such as Networking, Compute, Object Storage, and Databases.
+The **Capstone Project: WordPress Site on AWS** involves designing and deploying a scalable, secure, and high-performance WordPress-based website for **DigitalBoost**, a digital marketing agency. The agency seeks a cost-effective solution that can handle increasing traffic while seamlessly integrating with their existing infrastructure. 
 
-### Project Overview
+This project allowed me to apply and reinforce my DevOps knowledge, particularly in leveraging AWS services to deploy a production-ready application. The tasks completed during this project highlight my ability to design and implement robust cloud architectures.
 
-The project overview with necessary architecture have been provided as you help __DigitalBoost__ with her Wordpress-Based Website. Kindly follow the instructions below to complete this Capstone Project. Also, necessary scripts have been provided here: 
+### Why Am I Doing This?
+
+This project serves the following purposes:
+
+1. **Practical Experience**: To gain hands-on experience in building secure and scalable cloud environments.
+2. **Problem-Solving Skills**: To apply concepts of networking, databases, and load balancing in a real-world scenario.
+3. **Cloud Expertise**: To enhance my proficiency in AWS services and implement best practices for cloud deployments.
+
+By successfully completing this project, I aim to demonstrate my capability to design reliable cloud-based solutions, further establishing my path to becoming a skilled DevOps engineer.
+
+### Tasks Completed
+
+To achieve the project goals, I completed the following tasks:
+
+1. **VPC Setup**:
+   - Configured a Virtual Private Cloud (VPC) to isolate the project infrastructure securely.
+
+2. **Public and Private Subnet Configuration with NAT Gateway Setup**:
+   - Designed and implemented a network architecture with public and private subnets for better security and scalability.
+   - Configured a NAT Gateway for secure internet access.
+
+3. **AWS MySQL RDS Setup**:
+   - Created a managed database using Amazon RDS with MySQL to ensure data availability and reliability.
+
+4. **Setting up Amazon EFS for WordPress**:
+   - Configured Amazon Elastic File System (EFS) for scalable, shared file storage.
+
+5. **Application Load Balancer Setup**:
+   - Deployed an Application Load Balancer to distribute traffic evenly across instances and improve fault tolerance.
+
+6. **Auto Scaling Group**:
+   - Configured an Auto Scaling Group to dynamically handle traffic spikes and ensure high availability.
+
+### Resources Used
+
+#### AWS Services
+- **Amazon EC2**: Hosting the WordPress application.
+- **Amazon RDS**: Managing the MySQL database.
+- **Amazon EFS**: Providing scalable file storage for WordPress.
+- **Amazon VPC**: Ensuring network security and isolation.
+- **Application Load Balancer**: Distributing traffic and improving fault tolerance.
+- **Auto Scaling Group**: Maintaining high availability during traffic spikes.
+- **NAT Gateway**: Enabling secure internet access for private subnets.
+
+### WordPress Platform
+- **Content Management System (CMS)**: Used to manage and build the WordPress-based website.
+
+### Scripts and Tools
+
+#### Automation Scripts
+- CloudFormation templates for provisioning AWS infrastructure.
+- Shell scripts for configuring and deploying WordPress components.
+
+#### Tools
+- **Visual Studio Code (VS Code)**: Used for writing, editing, and managing scripts and configuration files efficiently.
+- **AWS Management Console**: For managing and monitoring AWS resources.
+- **Command Line Interface (CLI)**: To execute commands and manage AWS services programmatically.
+- **Git**: For version control of scripts and templates.
+
+These tools and scripts streamlined the project's development and deployment process, ensuring automation and reproducibility.
+
+### Pre-requisite Knowledge
+- Concepts from **TechOps Essentials** and foundational DevOps projects.
+
+### Conclusion
+
+This project has been instrumental in demonstrating my ability to design and deploy a scalable, secure, and cost-effective WordPress site on AWS. It underscores my proficiency in utilizing AWS services and applying industry best practices to deliver reliable cloud-based solutions.
 
 ### Project Deliverables
 
-####  Documentation:
-- Detailed documentation for each component setup.
-- Explanation of security measures implemented.
+#### Documentation:
+- **Detailed Documentation**: Comprehensive documentation for each component setup, including configurations and implementation steps.
+- **Security Measures**: Clear explanation of the security measures implemented to ensure the safety and reliability of the WordPress site.
 
-####  Demonstration of the WordPress site.
-- Demonstration of the WordPress site.
-- Showcase auto-scaling by simulating increased traffic.
+#### Demonstration:
+- **Live Demonstration**: A working demonstration of the WordPress site hosted on AWS, showcasing its functionality and performance.
+- **Auto-Scaling Showcase**: Simulation of increased traffic to demonstrate the functionality of auto-scaling and load balancing.
+
+**Project Overview:**
 
 **Screenshot:** 
 
@@ -40,7 +108,6 @@ git init
 ```
 
 ### Evaluation Report for the Capstone Project: WordPress Site on AWS
-
 
 ### Task 2: VPC Setup
 
@@ -99,9 +166,9 @@ The **Virtual Private Cloud (VPC) Setup** is a critical component of the project
 ![Private Subnet 2](./Images/6.WordPress-Based-Private-subnet-1b.png)
 
 ##### Notes
+
 - Each subnet is designed to fit within the same VPC for seamless communication.
 - Public subnets are configured to handle traffic from the internet, while private subnets are isolated for backend services.
-
 
 #### Step 2.3: Internet Gateway and Route Table Configuration
 
@@ -169,7 +236,6 @@ Below is screenshot of the private route table configurations:
 **Screenshot:**  
 
 ![Private 1a and Private 1c subnets](./Images/9c.Add_private_subnet_associations.png)
-
 
 ### Task 3: Public and Private Subnet Configuration with NAT Gateway Setup
 
@@ -298,6 +364,7 @@ __Commands:__
 sudo yum update -y
 sudo yum install -y amazon-efs-utils
 ```
+
 **Screenshot:**  
 
 ![Install Amazon EFS](./Images/14b.install_amazon_efs.png)
@@ -309,6 +376,7 @@ __Command:__
 ```bash
 sudo mkdir -p /mnt/efs
 ```
+
 **Screenshot:**  
 
 ![Create directory](./Images/14c.EFS_created-directory-1.png)
@@ -346,6 +414,7 @@ __Commands:__
 ```bash
 echo "fs-0a50bb60595fc972d /mnt/efs efs defaults,_netdev 0 0" | sudo tee -a /etc/fstab
 ```
+
 **Screenshot:**  
 
 ![create /etc/fstab file](./Images/14e.EFS_add_etc_fstab.png)
@@ -382,10 +451,10 @@ __Commands:__
 ```bash
 sudo systemctl start httpd
 ```
+
 **Screenshot:**  
 
 ![Configure WordPress](./Images/14f.EFS_shared.png)
-
 
 #### Verify the Setup
 
@@ -399,7 +468,6 @@ Visit your WordPress site in the browser to ensure it is functioning correctly. 
 
 #### Objective
 Set up an Application Load Balancer to distribute incoming traffic among multiple instances, ensuring high availability and fault tolerance.
-
 
 #### Step 6.1 : Create an Application Load Balancer
 - Navigate to the EC2 dashboard.
@@ -446,7 +514,6 @@ Set up an Application Load Balancer to distribute incoming traffic among multipl
 **Screenshot:**  
 
 ![Step 3 - Integrate with Auto Scaling Group](./Images/16b.Integrate-loadbalancer.png)
-
 
 #### Testing the Load Balancer
 - Access the Load Balancer DNS name (available in the EC2 dashboard under Load Balancers).
@@ -522,6 +589,7 @@ In this step, I will add the website files to the Git repository, configure my g
 
 - Commit Changes: Commit the changes with a clear and descriptive message.
 
+__Commands:__
 ```bash
 git add .
 git config --global user.name "YourUsername"
@@ -529,13 +597,34 @@ git config --global user.email "youremail@example.com"
 git commit -m "Initial commit: Add WordPress site template files"
 ```
 
+**Screenshot:**
+
+![Git Stage and Commit WordPress Site](./Images/18.WordPress_git_add_commit.png)
+
 #### Step 8.2: Push the code to your Github repository
 
 After initializing your Git repository and adding your WordPress site template, the next step is to push your code to a remote repository on GitHub. This step is crucial for version control and collaboration.
 
 - Create a Remote Repository on GitHub: Log into your GitHub account and create a new repository named __WordPress-based__. Leave the repository empty without initializing it with a README, .gitignore, or license.
 
+**Screenshots:**
+
+![Create New Repository Name on Github](./Images/19a.Github_New_Repository.png)
+
+![Push to New Repository](./Images/19b.Github_New_Repository.png)
 
 - Link Your Local Repository to GitHub: In your terminal, within your project directory, add the remote repository URL to your local repository configuration.
 
 - Push Your Code: Upload Your Local Repository Content to GitHub Once you have linked your local repository to GitHub, use the following command to push your commits from your local main branch to the remote repository. This enables you to store your project in the cloud and share it with others.
+
+__Commands:__
+```bash
+git remote add origin https://github.com/Holuphilix/WordPress-based.git
+git branch -M main
+git push -u origin main
+```
+
+**Screenshot:**
+
+![Git Push origin Main](./Images/20.Wordpress_git_push_origin.png)
+
