@@ -319,7 +319,7 @@ Correct configuration of security groups for the RDS instance, ensuring proper i
 
 **Screenshots:**  
 
-![Security Group Configuration](./Images/13c.RDS_Security_group_outbound.png)
+![Security Group Configuration](./Images/13b.RDS_Security_group.png)
 
 - Outbound rule configuration 
 
